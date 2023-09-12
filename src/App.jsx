@@ -1,15 +1,8 @@
 import { useState } from 'react';
 import './App.css'
+import List from './List';
 
-function List({ list }) {
-  return (
-    <ul>
-      {
-        list.map((l, index) => <li key={index}>{l}</li>)
-      }
-    </ul>
-  )
-}
+export const list = []
 
 function App() {
   const [value, setValue] = useState('');
@@ -17,12 +10,12 @@ function App() {
     setValue(v);
   }
 
-  const [list, setList] = useState([])
-
   const addHandler = () => {
-    setList(prev => [...prev, value])
-    setValue('')
+    list.push(value)
+    // setValue('')
   }
+
+  console.log(list);
 
   return (
     <>
@@ -34,7 +27,7 @@ function App() {
         <button onClick={addHandler}>Add</button>
       </div>
 
-      <List list={list} />
+      <List />
     </>
   );
 }
